@@ -21,9 +21,9 @@ class AuthController extends BaseController
                 return response()->json(['error'=>400,'msg'=>'token创建失败']);
             }
         }catch (JWTException $e){
-            return response()->json(['error'=>400,'msg'=>'token创建失败']);
+            return ['error'=>400,'msg'=>'token创建失败'];
         }
-        return response()->json(['error'=>0,'msg'=>$token]);
+        return ['error'=>0,'msg'=>$token];
     }
 
     public function register(Request $request) {

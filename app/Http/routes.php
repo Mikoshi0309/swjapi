@@ -24,5 +24,6 @@ $api->version('v1',['namespace'=>'App\Http\Controllers\Api\V1'],function($api){
 
     $api->group(['middleware'=>'jwt.auth'],function($api){
         $api->get('article','ArticleController@index');
+        $api->get('article/{id}','ArticleController@show');
     });
 });
