@@ -27,3 +27,12 @@ $api->version('v1',['namespace'=>'App\Http\Controllers\Api\V1'],function($api){
         $api->get('article/{id}','ArticleController@show');
     });
 });
+$api->version('v2',['namespace'=>'App\Http\Controllers\Api\V2'],function($api){
+    //登录
+    $api->post('auth/login','AuthController@login');
+    $api->post('auth/register','AuthController@register');
+
+    $api->group(['middleware'=>'jwt.auth'],function($api){
+        $api->get('article','ArticleController@index');
+    });
+});
